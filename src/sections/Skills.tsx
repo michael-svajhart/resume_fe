@@ -10,20 +10,18 @@ const Skills: React.FC = () => {
                         Title="Javascript"
                         Start={"2016-06-01"}
                     />
-                    
+                     <Skill 
+                        Title="TypeScript"
+                        Start={"2022-06-01"}
+                    />
                     <Skill 
                         Title="C#"
                         Start={"2017-06-01"}
                         End={"2022-08-01"}
                     />
-                    
                     <Skill 
                         Title="GoLang"
                         Start={"2022-04-01"}
-                    />
-                    <Skill 
-                        Title="TypeScript"
-                        Start={"2023-09-01"}
                     />
                     <Skill 
                         Title="Java"

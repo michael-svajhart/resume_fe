@@ -1,25 +1,10 @@
-import React from "react"
+import React, { useEffect } from "react"
+import { Button } from "react-bootstrap";
 
-interface TCords {
-    x: number;
-    y:number;
-}
 
 const ProjectApple: React.FC = () => {
-    const [coordinates, setcoordinates] = React.useState<TCords>({x:50, y:50});
-    const boundsMax = 95;
-    const boundsMin = 5;
-
-    const getNewPosition = () => {
-        return (Math.floor(Math.random() * (boundsMax - boundsMin)) + boundsMin);
-    }
-
-    const moveApple = () => {
-        let tempX = getNewPosition();
-        let tempY =  getNewPosition();
-
-        setcoordinates({x: tempX, y:tempY})
-    }
+    const [apples, setApples] = React.useState<number[]>([1]);
+    
 
     return (
         <>
@@ -27,8 +12,13 @@ const ProjectApple: React.FC = () => {
                 <div className="container">
                     <h1 className="title">Project Apple</h1>
                     <h6 className="description">Simply click the apple.</h6>
+                    <Button onClick={()=>{setApples([...apples, apples.length])}}>Add Apple</Button>
                     <div className="fence">
-                        <Apple positionX={coordinates.x} positionY={coordinates.y} onClick={moveApple}/>
+                        {apples.map( (a) => {
+                            return (
+                                <Apple key={a} />
+                            )
+                        })}
                     </div>
                     
                 </div>
@@ -39,16 +29,71 @@ const ProjectApple: React.FC = () => {
 };
 
 interface TApple {
-    positionX: number;
-    positionY: number;
-    onClick: any;
+    x: number;
+    y: number;
+    hidden: boolean;
 }
-const Apple: React.FC<TApple> = ({positionX = 50, positionY = 50, onClick}) => {
+
+interface TAppleMessage {
+    x: number;
+    y: number;
+    hidden: boolean;
+}
+
+const Apple: React.FC<{key:number}> = ({key}) => {
+    
+    const boundsMax = 95;
+    const boundsMin = 5;
+
+    useEffect(()=>{
+        moveApple();
+    },[])
+    
+    const [apple, setApple] = React.useState<TApple>({x:50, y:50, hidden:true});
+    
+    const [message, setMessage] = React.useState<TAppleMessage>({x:50, y:50, hidden:true});
+
+    const getNewPosition = () => {
+        return (Math.floor(Math.random() * (boundsMax - boundsMin)) + boundsMin);
+    }
+
+    const moveApple = () => {
+        triggerMessage(apple)
+        let tempX = getNewPosition();
+        let tempY =  getNewPosition();
+
+        setApple({x: tempX, y:tempY, hidden:false})
+        
+    }
+
+    const triggerMessage = (a: TApple) => {
+        setMessage({
+            ...a,
+            hidden: false
+        })
+        setTimeout(()=>{
+            setMessage({
+            ...a,
+            hidden: true
+        })
+        }, 300)
+    }
+    
+    if(apple.hidden) return null;
+
     return (
-        <div className="apple" style={{left: positionX + "%", top:positionY + "%"}} onMouseEnter={onClick}>
+        <>
+        {
+            !message.hidden && <div className="apple" style={{left: message.x + "%", top:message.y + "%"}} >
+                <span>*dodge*</span>
+            </div> 
+        }
+        
+        <div className="apple" style={{left: apple.x + "%", top:apple.y + "%"}} onMouseEnter={moveApple} key={key}>
             <div className="leaf"></div>
             <div className="flesh"></div>
         </div>
+        </>
     )
 }
 

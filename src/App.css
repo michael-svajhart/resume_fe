@@ -180,6 +180,86 @@ footer a{
     font-size: 1rem;
 }
 
+
+/* Experience */
+.experience{
+    color:#000;
+    padding: 0 12px;
+    margin: 2rem 0;
+}
+.experience_title{
+    font-size:2.5em;
+    margin: 0 0 1rem 0;
+}
+.job_padding{
+    width: 50vw;
+    margin: 1rem auto;
+    text-align: center;
+}
+.job_line{
+    width:100%;
+    border-bottom: 1px dotted black;
+}
+
+.job_block_left{
+    text-align: left;
+    margin: 0 0 2rem;
+    display: flex;
+    flex-direction: row;
+    width:100%;
+}
+.job_block_right{
+    text-align: right;
+    margin: 0 0 2rem;
+    display: flex;
+    flex-direction: row-reverse;
+}
+.job_block_row{
+    display: block;
+    width: 100%;
+    max-width: 600px;
+}
+.job_block_position{
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin: 0 0 .5rem;
+}
+.job_block_company{
+    font-size: 1rem;
+}
+.job_block_location{
+    font-size: 1rem;
+}
+.job_block_timespan{
+    font-size: 1rem;
+}
+.job_block_description{
+    font-size: 1rem;
+    margin: 1rem 0;
+}
+.job_block_skills{
+    font-size: 1rem;
+    margin: 0 0 .5rem;
+}
+.job_block_details_title{
+    margin: 0 0 .5rem;
+}
+.job_block_details_list{
+    font-size: 1rem;
+    width: 100%;
+    max-width: 50vh;
+    list-style-type: circle;
+}
+.job_block_right .job_block_details_list{
+    margin: 0 0 0 auto;
+}
+.job_block_left .job_block_details_list{
+    margin: 0 0 0 20px;
+}
+.job_block_details_list_item{
+    margin: 0 0 .5rem;
+}
+
 /* Project Apple */
 .section{
     display: block;

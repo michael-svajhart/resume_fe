@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 import { useEffect, useState } from 'react';
 import Padder from './layout/Padder';
@@ -27,7 +28,7 @@ function App() {
     
     measureHeader();
   }, []);
-  
+
   return (
     <>
       <Header/>

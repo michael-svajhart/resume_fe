@@ -8,6 +8,26 @@ const Experience: React.FC = () => {
             
             <Job 
                 Side="left"
+                Position="Web and Mobile Application Manager"
+                Company="Musco Sports Lighting"
+                Location="Richmond Hill, GA"
+                Start="Febuary 2024"
+                End="Present"
+                Description="Lead the department’s culture, processes, and development efforts. My role is split between leadership and hands-on contributions, including stakeholder engagement, requirement gathering, backlog creation, prioritization, and team development."
+                Skills={": ReactJS, ReactNative, AWS, TypeScript,  CSS, HTML, Git, Azure Boards, Scrum Master"}
+                DetialsTitle="Operation Details:"
+                Details={[
+                    "Manager, Leading development of the Facility Management Dashboard through to launch.",
+                    "Designed wireframes for new internal applications, including Facility Viewer.",
+                    "Advocated for and transitioned Control-Link authentication to the team; designed and validated the new authentication architecture.",
+                    "Fostered a productive, collaborative culture among engineers."
+                ] }
+                />
+            <div className="job_padding">
+                <div className="job_line"/>
+            </div>
+            <Job 
+                Side="right"
                 Position="Web Developer/Designer"
                 Company="Copperhead Creations"
                 Location="Westminster, CO"
@@ -28,12 +48,12 @@ const Experience: React.FC = () => {
                 <div className="job_line"/>
             </div>
             <Job 
-                Side="right"
+                Side="left"
                 Position="Software Engineer III"
                 Company="Bank of America"
                 Location="Denver, CO"
                 Start="August 2022"
-                End="Present"
+                End="Febuary 2024"
                 Description="Lead Frontend Engineer, I am responsible for developing and maintaining Global Information Security aplication Cyber Health Monitoring."
                 Skills="ReactJS, HTML5, CSS"
                 DetialsTitle="Key Contributions:"
@@ -47,7 +67,7 @@ const Experience: React.FC = () => {
                 <div className="job_line"/>
             </div>
             <Job 
-                Side="left"
+                Side="right"
                 Position="Web Application Developer"
                 Company="Musco Sports Lighting"
                 Location="Denver, CO"
@@ -69,7 +89,7 @@ const Experience: React.FC = () => {
                 <div className="job_line"/>
             </div>
             <Job 
-                Side="right"
+                Side="left"
                 Position="Web Applications Developer"
                 Company="Spherexx"
                 Location="Tulsa, OK"
