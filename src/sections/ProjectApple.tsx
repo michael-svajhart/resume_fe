@@ -67,6 +67,7 @@ const Apple: React.FC<{key:number}> = ({key}) => {
     }
 
     const triggerMessage = (a: TApple) => {
+        if(a.hidden) return;
         setMessage({
             ...a,
             hidden: false
