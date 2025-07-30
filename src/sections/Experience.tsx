@@ -14,7 +14,7 @@ const Experience: React.FC = () => {
                 Start="Febuary 2024"
                 End="Present"
                 Description="Lead the department’s culture, processes, and development efforts. My role is split between leadership and hands-on contributions, including stakeholder engagement, requirement gathering, backlog creation, prioritization, and team development."
-                Skills={": ReactJS, ReactNative, AWS, TypeScript,  CSS, HTML, Git, Azure Boards, Scrum Master"}
+                Skills={"ReactJS, ReactNative, AWS, TypeScript,  CSS, HTML, Git, Azure Boards, Scrum Master"}
                 DetialsTitle="Operation Details:"
                 Details={[
                     "Manager, Leading development of the Facility Management Dashboard through to launch.",

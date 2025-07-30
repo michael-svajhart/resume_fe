@@ -3,7 +3,7 @@ const Education: React.FC = () => {
         <section className="education" id="education">
             <h1 className="education_title">Education</h1>
             <University 
-                Degree="Batchlers of Science in Computer Science"
+                Degree="Bachelor of Science in Computer Science"
                 School="Oklahoma State University"
                 Location="Stillwater, OK"
                 Time="August 2012 - May 2017"
