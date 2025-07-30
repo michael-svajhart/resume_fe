@@ -3,7 +3,7 @@ import './App.css'
 import { useEffect, useState } from 'react';
 import Padder from './layout/Padder';
 import Splash from "./sections/Splash";
-import Header from './layout/header';
+import Header from './layout/Header';
 import Footer from './layout/Footer';
 import Education from "./sections/Education";
 import Experience from "./sections/Experience";
