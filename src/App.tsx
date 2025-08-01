@@ -1,20 +1,25 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Padder from './layout/Padder';
 import Splash from "./sections/Splash";
 import Header from './layout/Header';
 import Footer from './layout/Footer';
+import ProjectNav from './layout/ProjectNav';
 import Education from "./sections/Education";
 import Experience from "./sections/Experience";
 import Skills from "./sections/Skills";
 import ProjectApple from "./sections/ProjectApple";
+import ProjectAPI from './sections/ProjectAPI';
 //import Contact from "../components/resume/Contact";
 
  
 
 function App() {
   const [headerHeight, setHeaderHeight] = useState<number>(0)
+  
+  const stickyRef = useRef<HTMLDivElement | null>(null);
+  const [isSticky, setIsSticky] = useState<boolean>(false)
 
 
  useEffect(() => {
@@ -27,7 +32,22 @@ function App() {
     }
     
     measureHeader();
+
+    const handleScroll = () => {
+        if (!stickyRef.current) return;
+        const offsetTop = stickyRef.current.getBoundingClientRect().top;
+        setIsSticky(offsetTop <= 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+
+    useEffect(()=>{
+        
+
+    }, [])
 
   return (
     <>
@@ -39,12 +59,16 @@ function App() {
             <Experience/>
             <Skills/>
         </div>
-        <div id="projects">
+        <div id="projects" ref={stickyRef} className={isSticky ? "sticky" : ""}>
+          <ProjectNav/>
+          <div className="projects_container">
             <ProjectApple/>
+            <ProjectAPI/>
+          </div>
         </div>
       </main>
       <Footer/>
-       <Padder height={headerHeight}/>
+      <Padder height={headerHeight}/>
     </>
   )
 }

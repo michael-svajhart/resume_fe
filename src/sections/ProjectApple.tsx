@@ -8,7 +8,7 @@ const ProjectApple: React.FC = () => {
 
     return (
         <>
-            <section className="section">
+            <section className="section" id="projectapple">
                 <div className="container">
                     <h1 className="title">Project Apple</h1>
                     <h6 className="description">Simply click the apple.</h6>

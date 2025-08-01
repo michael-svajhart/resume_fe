@@ -285,6 +285,56 @@ footer a{
     margin: 0 0 1rem;
 }
 
+
+/*Project Nav*/
+#projects{
+    display:flex;
+    flex-direction: row;
+    width:100%;
+    position: relative;
+    background:black;
+}
+#projects aside{
+    width:200px;
+    background:black;
+    color:white;
+    position: static;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#projects.sticky aside{
+    position: fixed;
+    top: 0;
+    left:0;
+    z-index: 0;
+}
+
+#projects .projects_container{
+    margin:0 0 0 0;
+    width:calc(100% - 200px);
+}
+
+#projects.sticky .projects_container{
+    margin:0 0 0 200px;
+    width:calc(100% - 200px);
+}
+
+aside a {
+    padding: 1rem 0;
+    font-size: 1.25rem;
+    text-decoration: none;
+    color: #fff;
+    width:200px !important;
+}
+
+aside a:hover {
+    color: #000;
+    background-color: #fff;
+}
+
+/* Project Apple*/
 .fence{
     margin: 50px;
     border: 1px solid brown;
@@ -314,4 +364,8 @@ footer a{
     height:25px;
     margin:0 auto;
     background-color:red
+}
+
+#projectapi{
+    height:100vh
 }
