@@ -12,10 +12,10 @@ import Skills from "./sections/Skills";
 import ProjectApple from "./sections/ProjectApple";
 import ProjectAPI from './sections/ProjectAPI';
 //import Contact from "../components/resume/Contact";
-
- 
+ import ReactGA from "react-ga4";
 
 function App() {
+  
   const [headerHeight, setHeaderHeight] = useState<number>(0)
   
   const stickyRef = useRef<HTMLDivElement | null>(null);
@@ -23,6 +23,8 @@ function App() {
 
 
  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: "/", title: "Home Page" });
+
     const measureHeader = () => {
       let h = document.getElementById("header")?.offsetHeight;
       console.log(h)
@@ -42,12 +44,6 @@ function App() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-
-    useEffect(()=>{
-        
-
-    }, [])
 
   return (
     <>

@@ -1,22 +1,32 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { Button } from "react-bootstrap";
-
+import ReactGA from "react-ga4";
 
 const ProjectApple: React.FC = () => {
-    const [apples, setApples] = React.useState<number[]>([1]);
+    const [apples, setApples] = useState<number[]>([1]);
     
 
+    const addApple = () => {
+        setApples([...apples, apples.length]);
+
+        ReactGA.event({
+            category: "project_apple",
+            action: "add_apple",
+            value: apples.length, 
+        });
+    }
+   
     return (
         <>
             <section className="section" id="projectapple">
                 <div className="container">
                     <h1 className="title">Project Apple</h1>
                     <h6 className="description">Simply click the apple.</h6>
-                    <Button onClick={()=>{setApples([...apples, apples.length])}}>Add Apple</Button>
+                    <Button onClick={addApple}>Add Apple</Button>
                     <div className="fence">
-                        {apples.map( (a) => {
+                        {apples.map( (_, index) => {
                             return (
-                                <Apple key={a} />
+                                <Apple key={index} />
                             )
                         })}
                     </div>
@@ -49,10 +59,11 @@ const Apple: React.FC<{key:number}> = ({key}) => {
         moveApple();
     },[])
     
-    const [apple, setApple] = React.useState<TApple>({x:50, y:50, hidden:true});
+    const [apple, setApple] = useState<TApple>({x:50, y:50, hidden:true});
     
-    const [message, setMessage] = React.useState<TAppleMessage>({x:50, y:50, hidden:true});
+    const [message, setMessage] = useState<TAppleMessage>({x:50, y:50, hidden:true});
 
+    const [numberOfMoves, setNumberOfMoves] = useState<number>(0);
     const getNewPosition = () => {
         return (Math.floor(Math.random() * (boundsMax - boundsMin)) + boundsMin);
     }
@@ -68,10 +79,19 @@ const Apple: React.FC<{key:number}> = ({key}) => {
 
     const triggerMessage = (a: TApple) => {
         if(a.hidden) return;
+        
+        ReactGA.event({
+            category: "project_apple",
+            action: "move_apple",
+            value: numberOfMoves, 
+        });
+        
         setMessage({
             ...a,
             hidden: false
         })
+
+        setNumberOfMoves(numberOfMoves + 1)
         setTimeout(()=>{
             setMessage({
             ...a,
@@ -83,18 +103,18 @@ const Apple: React.FC<{key:number}> = ({key}) => {
     if(apple.hidden) return null;
 
     return (
-        <>
-        {
-            !message.hidden && <div className="apple" style={{left: message.x + "%", top:message.y + "%"}} >
-                <span>*dodge*</span>
-            </div> 
-        }
-        
-        <div className="apple" style={{left: apple.x + "%", top:apple.y + "%"}} onMouseEnter={moveApple} key={key}>
-            <div className="leaf"></div>
-            <div className="flesh"></div>
+        <div key={key}>
+            {
+                !message.hidden && <div className="apple" style={{left: message.x + "%", top:message.y + "%"}} >
+                    <span>*dodge*</span>
+                </div> 
+            }
+            
+            <div className="apple" style={{left: apple.x + "%", top:apple.y + "%"}} onMouseEnter={moveApple}>
+                <div className="leaf"></div>
+                <div className="flesh"></div>
+            </div>
         </div>
-        </>
     )
 }
 
