@@ -10,7 +10,7 @@ import Education from "./sections/Education";
 import Experience from "./sections/Experience";
 import Skills from "./sections/Skills";
 import ProjectApple from "./sections/ProjectApple";
-import ProjectAPI from './sections/ProjectAPI';
+import ProjectSort from './sections/ProjectSort';
 //import Contact from "../components/resume/Contact";
  import ReactGA from "react-ga4";
 
@@ -59,7 +59,7 @@ function App() {
           <ProjectNav/>
           <div className="projects_container">
             <ProjectApple/>
-            <ProjectAPI/>
+            <ProjectSort/>
           </div>
         </div>
       </main>
